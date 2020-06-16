@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Document</title>
+</head>
+<body>
+
+<div id="root">
+	
+	<h1>Skills</h1><hr>
+	<ul>
+		<li v-for="skill in skills" v-if="skill.exprience > 3">
+			{{ skill.name }}({{ skill.exprience}})
+		</li>
+	</ul>
+	<br>
+	<p v-if="show">
+		Show To Data
+	</p>
+	<p v-else="show">
+		Data not show
+	</p>
+
+
+
+</div>
+
+<script type="text/javascript" src="vue.js"></script>
+<script>
+	var app = new Vue({
+		el: "#root",
+		data: {
+			skills: [
+				{name: "php",exprience: 5},
+				{name: "Laravel",exprience: 4},
+				{name: "html",exprience: 2},
+				{name: "js",exprience: 1},
+				{name: "vue",exprience: 3}
+			],
+			show: false
+		}
+	})
+</script>
+</body>
+</html>
