@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="root">
+		
+		<ul>
+			<li v-for="(skill,i) in skills">
+				{{ skill }} <button @click="removeSkill(i)">x</button>
+			</li>
+		</ul>
+		<input type="text" v-model="newSkill">
+		<button v-on:click="addNewSkill()">Add New Skill</button>
+
+	</div>
+
+	<script src="vue.js"></script>
+	<script>
+		var app = new Vue({
+			el: "#root",
+			data: {
+				newSkill: "",
+				skills: ['html','css','php']
+			},
+			methods:{
+				addNewSkill: function(){
+					this.skills.push(this.newSkill)
+					this.newSkill = ''
+				},
+
+				removeSkill: function(i){
+					this.skills.splice(i,1)
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>
