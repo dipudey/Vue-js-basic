@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="root">
+
+    <ul>
+      <li><a v-bind:href="link1.url" v-bind:title="link1.title">{{ link1.text }}</a></li>
+    </ul>
+
+
+  </div>
+
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: "#root",
+      data: {
+        link1: {
+          text:"facebook",title: "go to facebook",url:"www.facebook.com"
+        }
+      }
+    })
+  </script>
+
+</body>
+</html>
