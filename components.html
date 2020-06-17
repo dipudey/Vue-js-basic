@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Components</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+	
+	<div id="root">
+		
+		<div class="container">
+			
+			<panel title="this is a component" content="this is a card body here"></panel>
+			<panel title="this is a card Component">
+				<h1>This is a input field</h1>
+				<input type="text">
+			</panel>
+
+		</div>
+
+	</div>
+
+
+	<script src="vue.js"></script>
+	<script>
+		Vue.component("panel",{
+			template: `
+				<div class="card">
+					<div class="card-header">
+						{{ title }}
+					</div>
+					<div class="card-body">
+						<slot></slot>
+					</div>
+				</div>
+			`,
+			props: ["title","content"]
+		})
+
+		var app = new Vue({
+			el: "#root",
+			data: {
+
+			}
+		})
+	</script>
+</body>
+</html>
