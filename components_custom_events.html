@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Components and custom events</title>
+	<link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+
+	<div id="root">
+		<!-- <button class="btn btn-info mt-5" data-toggle="modal" data-target="#modal1" >Click heare</button> -->
+		<button class="btn btn-outline-success" @click="show=true">Click</button>
+
+		<modal v-if="show">
+			<template slot="header">
+				<h2>Login From</h2>
+			</template>
+			<template slot="body">
+				<label for=""> Name </label>
+				<input type="text">
+			</template>
+		</modal>
+
+	</div>
+	
+	
+	<script src="jquery-3.3.1.min.js"></script>
+	<script src="bootstrap.min.js"></script>
+	<script src="vue.js"></script>
+	<script>
+
+		Vue.component("modal",{
+			template: `
+				<div class="modal" id="modal1">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <slot name="header"></slot>
+		          </div>
+		          <div class="modal-body">
+		            <slot name="body"></slot>
+		          </div>
+		          <div class="modal-footer">
+		            <button class="btn btn-danger" data-dismiss="modal">close</button>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+			`
+		})
+
+		var app = new Vue({
+			el: "#root",
+			data: {
+				show: false
+			}
+		})
+		
+	</script>
+</body>
+</html>
