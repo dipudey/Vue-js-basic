@@ -1,28 +1,61 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <navbar @search="search"></navbar>
+
+      <div class="container mt-4">
+        <div class="row">
+          <div class="col-md-9">
+            <inventory @addNewCartItem="addCartItem" :items="items"></inventory>
+          </div>
+          <div class="col-md-3">
+            <cart @itemRemoved="removeCart" :items="cart"></cart>
+          </div>
+        </div>
+
+      </div>
+
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import Navbar from "./components/Navbar"
+  import Inventory from "./components/Inventory"
+  import Cart from "./components/Cart"
+  import data from "./data.js"
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    components:{
+      Navbar,
+      Cart,
+      Inventory
+    },
+    data(){
+      return {
+        items : [],
+        cart: []
+      }
+    },
+    mounted(){
+      this.items = data
+    },
+    methods:{
+      search(keyword) {
+        this.items = data.filter(item => {
+          return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+        })
+      },
+      addCartItem(item) {
+        this.cart.push(item)
+      },
+      remvoeCart(i){
+        this.cart.splice(i,1)
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
