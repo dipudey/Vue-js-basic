@@ -7,9 +7,14 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+          <ul class="navbar-nav ml-auto mr-4">
+            <li class="nav-item active"><router-link :to="{ path:'/' }" class="nav-link">Home</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link :to="{ path:'/test' }" class="nav-link">Test</router-link>
+            </li>
           </ul>
-          <form @submit.prevent="search" class="form-inline my-2 my-lg-0">
+          <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" v-model="keyword">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
           </form>
@@ -26,9 +31,9 @@
       }
     },
     methods: {
-      search() {
-        return this.$emit('search',this.keyword)
-      }
+      // search() {
+      //   return this.$emit('search',this.keyword)
+      // }
     }
   }
 </script>

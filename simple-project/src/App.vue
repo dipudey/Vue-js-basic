@@ -1,18 +1,14 @@
 <template>
   <div id="app">
 
-    <navbar @search="search"></navbar>
-
+    <navbar></navbar>
+    <!-- <navbar @search="search"></navbar> -->
+    
       <div class="container mt-4">
         <div class="row">
-          <div class="col-md-9">
-            <inventory @addNewCartItem="addCartItem" :items="items"></inventory>
-          </div>
-          <div class="col-md-3">
-            <cart @itemRemoved="removeCart" :items="cart"></cart>
-          </div>
+          <div class="col-md-9"><router-view></router-view></div>
+          <div class="col-md-3"><cart></cart></div>
         </div>
-
       </div>
 
 
@@ -21,37 +17,37 @@
 
 <script>
   import Navbar from "./components/Navbar"
-  import Inventory from "./components/Inventory"
+  // import Inventory from "./components/Inventory"
   import Cart from "./components/Cart"
-  import data from "./data.js"
+  // import data from "./data.js"
 
   export default {
     components:{
       Navbar,
       Cart,
-      Inventory
+      // Inventory
     },
     data(){
       return {
-        items : [],
-        cart: []
+        // items : [],
+        // cart: []
       }
     },
     mounted(){
-      this.items = data
+      // this.items = data
     },
     methods:{
-      search(keyword) {
-        this.items = data.filter(item => {
-          return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
-        })
-      },
-      addCartItem(item) {
-        this.cart.push(item)
-      },
-      remvoeCart(i){
-        this.cart.splice(i,1)
-      }
+      // search(keyword) {
+      //   this.items = data.filter(item => {
+      //     return item.title.toLowerCase().indexOf(keyword.toLowerCase()) !== -1
+      //   })
+      // },
+      // addCartItem(item) {
+      //   this.cart.push(item)
+      // },
+      // remvoeCart(i){
+      //   this.cart.splice(i,1)
+      // }
     }
   }
 </script>
